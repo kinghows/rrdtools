@@ -30,11 +30,17 @@ rrdtools install:
 
 yum install rrdtool rrdtool-devel
 
+iostat install:
+
+yum install sysstat -y
+
+iostat script:/root/monitor/rrdtool_iostat.sh
+
 crontab -e
 
 */1 * * * * /bin/bash  /root/monitor/rrdtool_iostat.sh >/dev/null 2>&1
 
 rrdtool lastupdate /usr/share/nagios/html/iostat.rrd
 
-
+http://ip/nagios/iostat.html
 
